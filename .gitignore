@@ -1,0 +1,74 @@
+# =========================================================================
+# Unity Standard Gitignore
+# Place this file in the root folder of your Unity project.
+# =========================================================================
+
+# Unity temporary folders and local caches
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emory[Cc]aptures/
+/[Rr]ecordings/
+/[Ss]erver[Dd]ata/
+
+# Asset meta data must ONLY be ignored if the asset itself is ignored
+!/[Aa]ssets/**/*.meta
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project and IDE Caches / User settings
+.vs/
+.gradle/
+.idea/
+.vscode/
+*.DotSettings.user
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Auto-generated Visual Studio / JetBrains Rider solution files
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.tmp
+
+# Unity3D generated meta files for the above ignored files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Crash logs and diagnostics
+sysinfo.txt
+mono_crash.*
+crashlytics-build.properties
+
+# Build Artifacts (Omit if you track builds elsewhere, recommended)
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# UI Toolkit & Visual Scripting caches
+UIElementsSchema/
+VisualScripting.Generated/
