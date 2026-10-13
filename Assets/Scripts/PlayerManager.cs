@@ -4,14 +4,12 @@ public class PlayerManager : MonoBehaviour
 {
     // Camera Rotation
     public float mouseSensitivity = 2f;
-    private float verticalRotation = 0f;
-    private Transform cameraTransform;
 
     // Ground Movement
     private Rigidbody rb;
     public float MoveSpeed = 5f;
     private float moveHorizontal;
-    private float moveForward;
+    //private float moveForward;
 
     // Jumping
     public float jumpForce = 10f;
@@ -28,7 +26,6 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        cameraTransform = Camera.main.transform;
 
         // Set the raycast to be slightly beneath the player's feet
         playerHeight = GetComponent<CapsuleCollider>().height * transform.localScale.y;
@@ -42,9 +39,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveForward = Input.GetAxisRaw("Vertical");
-
-        RotateCamera();
+        //moveForward = Input.GetAxisRaw("Vertical");
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -73,7 +68,7 @@ public class PlayerManager : MonoBehaviour
     void MovePlayer()
     {
 
-        Vector3 movement = (transform.right * moveHorizontal + transform.forward * moveForward).normalized;
+        Vector3 movement = (transform.right * moveHorizontal + transform.forward).normalized;
         Vector3 targetVelocity = movement * MoveSpeed;
 
         // Apply movement to the Rigidbody
@@ -83,21 +78,10 @@ public class PlayerManager : MonoBehaviour
         rb.linearVelocity = velocity;
 
         // If we aren't moving and are on the ground, stop velocity so we don't slide
-        if (isGrounded && moveHorizontal == 0 && moveForward == 0)
+        if (isGrounded && moveHorizontal == 0)
         {
             rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
         }
-    }
-
-    void RotateCamera()
-    {
-        float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
-        transform.Rotate(0, horizontalRotation, 0);
-
-        verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
     }
 
     void Jump()
